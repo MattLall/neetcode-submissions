@@ -1,0 +1,27 @@
+class Solution {
+    public boolean mergeTriplets(int[][] triplets, int[] target) {
+        boolean[] present = new boolean[3];
+        for (int[] t : triplets) {
+            if (Arrays.equals(t, target)) {
+                return true;
+            }
+            if (t[0] > target[0] || t[1] > target[1] || t[2] > target[2]) {
+                continue;
+            }
+            for (int i = 0; i < 3; i++) {
+                if (t[i] == target[i]) {
+                    present[i] = true;
+                }
+            }
+        }
+        return present[0] && present[1] && present[2];
+        // int[] merge = new int[3];
+        // for (int[] v : viable) {
+        //     merge[0] = Math.max(merge[0], v[0]);
+        //     merge[1] = Math.max(merge[1], v[1]);
+        //     merge[2] = Math.max(merge[2], v[2]);
+        // }
+
+        // return Arrays.equals(merge, target);
+    }
+}
